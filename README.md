@@ -4,7 +4,7 @@ Inspect your Sanity.io schema fields straight in your Studio using this tool
 
 ## Installation
 
-1. `sanity install content-model-graph`
+1. `sanity install fieldwork`
 2. There's no step 2.
 
 ## Examples
