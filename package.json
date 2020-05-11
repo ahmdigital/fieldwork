@@ -58,6 +58,17 @@
   },
   "jest": {
     "resetMocks": true,
-    "resetModules": true
+    "resetModules": true,
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "statements": 42.19,
+        "branches": 12.12,
+        "lines": 38.98,
+        "functions": 56
+      }
+    }
   }
 }
