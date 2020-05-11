@@ -1,21 +1,46 @@
 import _ from 'lodash';
 import PropTypes from 'prop-types';
 import React, { Fragment } from 'react';
+import styled from 'styled-components';
 
 import schemaTypesToViewData from './schema-types-to-view-data';
 import ShowExample from './components/show-example';
 import UseTimes from './components/use-times';
 
+const Wrapper = styled.div`
+  margin: 0 auto;
+  max-width: 60ch;
+  padding: 1rem;
+`;
+
+const Tagline = styled.p`
+  padding-bottom: 2rem;
+`;
+
+const Well = styled.div`
+  background-color: white;
+  margin-bottom: 4rem;
+  padding: 2rem;
+`;
+
+const FieldName = styled.h2`
+  margin-top: 0;
+`;
+
+const OptionsJSON = styled.pre`
+  max-width: 25rem;
+`;
+
 const Fieldwork = ({ sanityClient, types }) => {
   const viewData = schemaTypesToViewData(types);
   return (
-    <div style={{ margin: '0 auto', maxWidth: '60ch', padding: '1rem' }}>
+    <Wrapper>
       <h1>Fieldwork</h1>
-      <p style={{ paddingBottom: '2rem' }}>Investigate the fields in your schema.</p>
+      <Tagline>Investigate the fields in your schema.</Tagline>
       <div>
         {_.map(viewData, (groupOfItems, fieldName) => (
-          <div key={fieldName} style={{ backgroundColor: 'white', marginBottom: '4rem', padding: '2rem' }}>
-            <h2 style={{ marginTop: 0 }}>{fieldName}</h2>
+          <Well key={fieldName}>
+            <FieldName>{fieldName}</FieldName>
             {_.map(groupOfItems, (items, hash) => {
               const { description, options, validation, type } = items[0];
               return (
@@ -53,7 +78,7 @@ const Fieldwork = ({ sanityClient, types }) => {
                   {!_.isEmpty(options) && (
                     <Fragment>
                       <h4>Options</h4>
-                      <pre style={{ maxWidth: '25rem' }}>{JSON.stringify(options, null, 2)}</pre>
+                      <OptionsJSON>{JSON.stringify(options, null, 2)}</OptionsJSON>
                     </Fragment>
                   )}
 
@@ -76,10 +101,10 @@ const Fieldwork = ({ sanityClient, types }) => {
                 </div>
               );
             })}
-          </div>
+          </Well>
         ))}
       </div>
-    </div>
+    </Wrapper>
   );
 };
 
