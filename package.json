@@ -41,7 +41,6 @@
   },
   "peerDependencies": {
     "@sanity/base": "^1.0.0",
-    "@sanity/components": "^1.0.0"
   },
   "devDependencies": {
     "@ahmdigital/eslint-config": "3.1.33",
