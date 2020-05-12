@@ -2,6 +2,10 @@
 
 Inspect your Sanity.io schema fields straight in your Studio using this tool
 
+## Some use cases
+- See what you've got in preparation for adding new schemas, so you can maximise re-use.
+- See where you can simplify things. Its useful for everyone to have fields with the same name act the same.
+
 ## Installation
 
 1. `sanity install fieldwork`
