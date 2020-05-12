@@ -22,11 +22,16 @@ const schemaTypesToViewData = (types) => {
   _.forEach(types, (type) => {
     _.forEach(type.fields, (field) => {
       output[field.name] = _.compact(
-        _.concat(output[field.name], {
-          ...field,
-          typeName: type.name,
-          validation: checkRules(field.validation || _.noop),
-        }),
+        _.concat(
+          output[field.name],
+          _.defaults(
+            {
+              typeName: type.name,
+              validation: checkRules(field.validation || _.noop),
+            },
+            field,
+          ),
+        ),
       );
     });
   });
@@ -34,7 +39,7 @@ const schemaTypesToViewData = (types) => {
   const discardTypeNameForGrouping = null;
   const orderedObject = _.mapValues(countsByField, (value, key) => output[key]);
   return _.mapValues(orderedObject, (fields) =>
-    _.groupBy(fields, (field) => hashCode(JSON.stringify({ ...field, typeName: discardTypeNameForGrouping }))),
+    _.groupBy(fields, (field) => hashCode(JSON.stringify(_.defaults({ typeName: discardTypeNameForGrouping }, field)))),
   );
 };
 
