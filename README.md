@@ -9,7 +9,7 @@ Inspect your Sanity.io schema fields straight in your Studio using this tool
 
 ## Examples
 
-To come.
+<img width="641" alt="image" src="https://user-images.githubusercontent.com/4197647/81630417-de847400-9448-11ea-8d2c-185c7d5df0fb.png">
 
 ## Contributing
 
