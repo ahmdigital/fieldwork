@@ -10,7 +10,7 @@ const ShowExample = ({ fieldName, sanityClient, typeNames }) => {
     const params = { fieldName, typeNames };
     sanityClient.fetch(query, params).then((response) => setState(response[fieldName]));
   }, [fieldName, sanityClient, typeNames]);
-  return <Fragment>{exampleToString(state)}</Fragment> || null;
+  return <Fragment>{exampleToString(state)}</Fragment>;
 };
 ShowExample.propTypes = {
   fieldName: PropTypes.string.isRequired,
