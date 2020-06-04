@@ -1,4 +1,4 @@
-export default [
+const fixtures = [
   {
     fields: [
       { description: 'this name is different for some reason', name: 'name', type: 'string' },
@@ -98,3 +98,5 @@ export default [
     type: 'document',
   },
 ];
+
+export default fixtures;
