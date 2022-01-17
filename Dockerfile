@@ -1,4 +1,4 @@
-FROM node:12.22.5
+FROM node:14
 
 WORKDIR /var/app
 
