@@ -53,5 +53,8 @@
     "extends": [
       "@ahmdigital"
     ]
+  },
+  "engines": {
+    "node": "^14"
   }
 }
