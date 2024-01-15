@@ -31,7 +31,7 @@ const OptionsJSON = styled.pre`
   max-width: 25rem;
 `;
 
-const Fieldwork = ({ sanityClient, types }) => {
+function Fieldwork({ sanityClient, types }) {
   const viewData = schemaTypesToViewData(types);
   return (
     <Wrapper>
@@ -106,7 +106,7 @@ const Fieldwork = ({ sanityClient, types }) => {
       </div>
     </Wrapper>
   );
-};
+}
 
 Fieldwork.propTypes = {
   sanityClient: PropTypes.shape({ fetch: PropTypes.func.isRequired }).isRequired,

@@ -4,7 +4,7 @@ import React from 'react';
 
 import getPluralisationCharacter from './utils/get-pluralisation-character';
 
-const UseTimes = ({ fieldName, groupOfItems, items }) => {
+function UseTimes({ fieldName, groupOfItems, items }) {
   const variationTimes = _.size(items);
   const totalTimes = _(groupOfItems).values().flatten().size();
   const pluralisationCharacter = getPluralisationCharacter(totalTimes);
@@ -18,7 +18,7 @@ const UseTimes = ({ fieldName, groupOfItems, items }) => {
       {fieldName}’.
     </p>
   );
-};
+}
 
 UseTimes.propTypes = {
   fieldName: PropTypes.string.isRequired,
