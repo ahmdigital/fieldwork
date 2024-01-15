@@ -1,6 +1,6 @@
 {
   "name": "sanity-plugin-fieldwork",
-  "version": "1.0.1",
+  "version": "1.1.1",
   "description": "Inspect your Sanity.io schema fields straight in your Studio using this tool",
   "main": "lib/index.js",
   "repository": {
@@ -39,15 +39,15 @@
     "styled-components": "^5.1.0"
   },
   "peerDependencies": {
-    "@sanity/base": "^1.0.0"
+    "@sanity/base": "^2.0.0"
   },
   "devDependencies": {
-    "@ahmdigital/eslint-config": "3.2.48",
+    "@ahmdigital/eslint-config": "7.1.40",
+    "@typescript-eslint/parser": "6.18.1",
     "babel-cli": "6.26.0",
-    "babel-eslint": "10.1.0",
     "babel-preset-es2015": "6.24.1",
     "babel-preset-react": "6.24.1",
-    "eslint": "7.26.0"
+    "eslint": "8.56.0"
   },
   "renovate": {
     "extends": [
@@ -55,6 +55,6 @@
     ]
   },
   "engines": {
-    "node": "^14"
+    "node": "^16"
   }
 }
