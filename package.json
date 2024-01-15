@@ -1,6 +1,6 @@
 {
   "name": "sanity-plugin-fieldwork",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Inspect your Sanity.io schema fields straight in your Studio using this tool",
   "main": "lib/index.js",
   "repository": {
