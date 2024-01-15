@@ -1,3 +1,4 @@
 {
-  "extends": "@ahmdigital/eslint-config/react-config"
+  "extends": "@ahmdigital/eslint-config/react-config",  
+  "parser": "@typescript-eslint/parser"
 }
