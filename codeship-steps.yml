@@ -1,7 +1,0 @@
-- name: Lint, Build #, Test
-  service: build-service
-  type: parallel
-  steps:
-    - command: npm run lint
-    # - command: npm t -- --coverage
-    - command: npm run build

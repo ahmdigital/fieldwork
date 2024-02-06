@@ -1,5 +1,0 @@
-build-service:
-  build:
-    image: fieldwork
-    dockerfile: Dockerfile
-  cached: true
