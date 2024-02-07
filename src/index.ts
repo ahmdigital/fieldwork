@@ -22,3 +22,5 @@ export const fieldwork = definePlugin<FieldworkConfig | void>((config = {}) => {
     },
   };
 });
+
+export default fieldwork;
