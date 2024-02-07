@@ -9,4 +9,9 @@ COPY package.json .
 RUN npm install
 
 COPY src ./src
-COPY .babelrc .
+COPY sanity.json .
+COPY jest.config.js .
+COPY tsconfig.dist.json .
+COPY tsconfig.json .
+COPY tsconfig.settings.json .
+COPY v2-incompatible .
