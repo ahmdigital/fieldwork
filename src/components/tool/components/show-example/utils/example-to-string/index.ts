@@ -12,7 +12,7 @@ type Block = {
   children?: any;
 };
 
-const exampleToString = (blocks: string | Block | Block[]) => {
+const exampleToString = (blocks: string | Block | Block[]): string => {
   if (blocks === null) {
     return 'No Example Available';
   }
@@ -23,7 +23,7 @@ const exampleToString = (blocks: string | Block | Block[]) => {
 
   if (!isArray(blocks)) {
     if (blocks && blocks._type && blocks._type === 'slug') {
-      return blocks.current;
+      return blocks.current || '';
     }
 
     return JSON.stringify(blocks);
