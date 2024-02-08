@@ -1,42 +1,64 @@
-import { compact, concat, defaults, flow, forEach, groupBy, mapValues, reduce, split } from 'lodash/fp';
-import _ from 'lodash';
+import {
+  compact,
+  concat,
+  defaults,
+  flatMap,
+  flow,
+  forEach,
+  fromPairs,
+  groupBy,
+  map,
+  mapValues,
+  noop,
+  reduce,
+  reverse,
+  sortBy,
+  split,
+  toPairs,
+} from 'lodash/fp';
+import { countBy } from 'lodash';
 
 import checkRules from './utils/check-rules';
 
+type KeyPair = {
+  [key: string]: any;
+};
+
 type SchemaField = {
   name: string;
-  type: string;
+  validation?: Function;
 };
 
-type Schema = {
-  fields: SchemaField;
+type SchemaType = {
+  fields: SchemaField[];
+  name: string;
 };
 
-const hashCode = (inputString: string) =>
+const hashCode = (inputString: string): number =>
   flow(
     split(''),
     // eslint-disable-next-line no-bitwise
     reduce((currentItem, accumulator) => ((currentItem << 5) - currentItem + accumulator.charCodeAt(0)) | 0, 0),
   )(inputString);
 
-const schemaTypesToViewData = (types: Schema[]) => {
-  const countsByField = _(types)
-    .flatMap((type) => _.map(type.fields, 'name'))
-    .countBy()
-    .toPairs()
-    .sortBy(([, count]) => count)
-    .reverse()
-    .fromPairs()
-    .value();
+const schemaTypesToViewData = (types: SchemaType[]) => {
+  const countsByField = flow(
+    flatMap((type: SchemaType) => map('name', type.fields)),
+    countBy, // For some reason the lodash/fp version of this causes everything to explode
+    toPairs,
+    sortBy(([, count]) => count),
+    reverse,
+    fromPairs,
+  )(types);
 
-  const output = {};
-  forEach((type) => {
-    forEach((field) => {
+  const output: KeyPair = {};
+  forEach((type: SchemaType) => {
+    forEach((field: SchemaField) => {
       output[field.name] = compact(
         concat(
           defaults(field, {
             typeName: type.name,
-            validation: checkRules(field.validation || _.noop),
+            validation: checkRules(field.validation || noop),
           }),
           output[field.name],
         ),
@@ -45,10 +67,13 @@ const schemaTypesToViewData = (types: Schema[]) => {
   }, types);
 
   const discardTypeNameForGrouping = null;
-  const orderedObject = _.mapValues(countsByField, (value, key) => output[key]);
+  // We need to convert to the uncapped version here to access the key through mapValues
+  // I'm still not convinced that capping arguments is beneficial but whatever
+  // @ts-ignore - it complains about the `convert` function not existing on LodashMapValues
+  const orderedObject = mapValues.convert({ cap: false })((value, key) => output[key], countsByField);
+
   return mapValues(
-    (fields) =>
-      groupBy((field) => hashCode(JSON.stringify(defaults(field, { typeName: discardTypeNameForGrouping }))), fields),
+    groupBy((field) => hashCode(JSON.stringify(defaults(field, { typeName: discardTypeNameForGrouping })))),
     orderedObject,
   );
 };

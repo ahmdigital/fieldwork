@@ -1,0 +1,287 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`maps schema types array to view data 1`] = `
+{
+  "description": {
+    "63188285": [
+      {
+        "name": "description",
+        "of": [
+          {
+            "type": "block",
+          },
+        ],
+        "type": "array",
+        "typeName": "serviceChannel",
+        "validation": [],
+      },
+      {
+        "name": "description",
+        "of": [
+          {
+            "type": "block",
+          },
+        ],
+        "type": "array",
+        "typeName": "service",
+        "validation": [],
+      },
+      {
+        "name": "description",
+        "of": [
+          {
+            "type": "block",
+          },
+        ],
+        "type": "array",
+        "typeName": "legislation",
+        "validation": [],
+      },
+      {
+        "name": "description",
+        "of": [
+          {
+            "type": "block",
+          },
+        ],
+        "type": "array",
+        "typeName": "brandCampaign",
+        "validation": [],
+      },
+    ],
+  },
+  "endTime": {
+    "397541495": [
+      {
+        "name": "endTime",
+        "options": {
+          "dateFormat": "D MMM YYYY",
+          "timeStep": 1,
+        },
+        "type": "datetime",
+        "typeName": "release",
+        "validation": [],
+      },
+    ],
+  },
+  "identifier": {
+    "-1209135794": [
+      {
+        "name": "identifier",
+        "options": {
+          "source": "name",
+        },
+        "type": "slug",
+        "typeName": "service",
+        "validation": [],
+      },
+      {
+        "name": "identifier",
+        "options": {
+          "source": "name",
+        },
+        "type": "slug",
+        "typeName": "placeholder",
+        "validation": [],
+      },
+      {
+        "name": "identifier",
+        "options": {
+          "source": "name",
+        },
+        "type": "slug",
+        "typeName": "organisation",
+        "validation": [],
+      },
+    ],
+  },
+  "legalName": {
+    "-68257741": [
+      {
+        "name": "legalName",
+        "type": "string",
+        "typeName": "organisation",
+        "validation": [],
+      },
+    ],
+  },
+  "logo": {
+    "-318825570": [
+      {
+        "name": "logo",
+        "type": "image",
+        "typeName": "organisation",
+        "validation": [],
+      },
+    ],
+  },
+  "name": {
+    "-1080650659": [
+      {
+        "description": "this name is different for some reason",
+        "name": "name",
+        "type": "string",
+        "typeName": "brandCampaign",
+        "validation": [],
+      },
+    ],
+    "317756900": [
+      {
+        "name": "name",
+        "type": "string",
+        "typeName": "serviceChannel",
+        "validation": [],
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "typeName": "service",
+        "validation": [],
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "typeName": "release",
+        "validation": [],
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "typeName": "placeholder",
+        "validation": [],
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "typeName": "organisation",
+        "validation": [],
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "typeName": "legislation",
+        "validation": [],
+      },
+    ],
+  },
+  "providesServices": {
+    "-226513091": [
+      {
+        "name": "providesServices",
+        "of": [
+          {
+            "to": [
+              {
+                "type": "service",
+              },
+            ],
+            "type": "reference",
+          },
+        ],
+        "type": "array",
+        "typeName": "serviceChannel",
+        "validation": [],
+      },
+    ],
+  },
+  "slogan": {
+    "-1681617650": [
+      {
+        "name": "slogan",
+        "of": [
+          {
+            "lists": [],
+            "marks": {
+              "annotations": [],
+              "decorators": [
+                {
+                  "title": "Emphasis",
+                  "value": "em",
+                },
+              ],
+            },
+            "styles": [
+              {
+                "title": "Normal",
+                "value": "normal",
+              },
+            ],
+            "type": "block",
+          },
+        ],
+        "type": "array",
+        "typeName": "serviceChannel",
+        "validation": [],
+      },
+      {
+        "name": "slogan",
+        "of": [
+          {
+            "lists": [],
+            "marks": {
+              "annotations": [],
+              "decorators": [
+                {
+                  "title": "Emphasis",
+                  "value": "em",
+                },
+              ],
+            },
+            "styles": [
+              {
+                "title": "Normal",
+                "value": "normal",
+              },
+            ],
+            "type": "block",
+          },
+        ],
+        "type": "array",
+        "typeName": "service",
+        "validation": [],
+      },
+      {
+        "name": "slogan",
+        "of": [
+          {
+            "lists": [],
+            "marks": {
+              "annotations": [],
+              "decorators": [
+                {
+                  "title": "Emphasis",
+                  "value": "em",
+                },
+              ],
+            },
+            "styles": [
+              {
+                "title": "Normal",
+                "value": "normal",
+              },
+            ],
+            "type": "block",
+          },
+        ],
+        "type": "array",
+        "typeName": "brandCampaign",
+        "validation": [],
+      },
+    ],
+  },
+  "startTime": {
+    "-501757616": [
+      {
+        "name": "startTime",
+        "options": {
+          "dateFormat": "D MMM YYYY",
+          "timeStep": 1,
+        },
+        "type": "datetime",
+        "typeName": "release",
+        "validation": [],
+      },
+    ],
+  },
+}
+`;
