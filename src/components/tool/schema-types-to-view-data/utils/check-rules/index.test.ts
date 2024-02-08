@@ -1,6 +1,10 @@
 import checkRules from '.';
 
+type ValidationRuleFunc = {
+  required: Function;
+};
+
 it('lists the validations run', () => {
-  const validation = (Rules) => Rules.required().lowercase();
+  const validation = (Rules: ValidationRuleFunc) => Rules.required().lowercase();
   expect(checkRules(validation)).toEqual(['required', 'lowercase']);
 });

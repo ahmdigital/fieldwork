@@ -1,5 +1,6 @@
-import _ from "lodash";
-import getPluralisationCharacter from "./utils/get-pluralised-character";
+import { flatten, flow, size, values } from 'lodash/fp';
+
+import getPluralisationCharacter from './utils/get-pluralised-character';
 
 type UseTimesProps = {
   fieldName: string;
@@ -8,9 +9,10 @@ type UseTimesProps = {
 };
 
 const UseTimes = ({ fieldName, groupOfItems, items }: UseTimesProps) => {
-  const variationTimes = _.size(items);
-  const totalTimes = _(groupOfItems).values().flatten().size();
+  const variationTimes = size(items);
+  const totalTimes = flow(values, flatten, size)(groupOfItems);
   const pluralisationCharacter = getPluralisationCharacter(totalTimes);
+
   return variationTimes === totalTimes ? (
     <p>
       This field is used in {totalTimes} schema{pluralisationCharacter}.
