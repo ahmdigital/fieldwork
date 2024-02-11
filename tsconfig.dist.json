@@ -12,6 +12,8 @@
     "outDir": "./dist",
     "emitDeclarationOnly": true,
     "resolveJsonModule": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "isolatedModules": true,
+    "downlevelIteration": true
   }
 }
