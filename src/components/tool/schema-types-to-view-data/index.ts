@@ -16,6 +16,7 @@ import {
   split,
   toPairs,
 } from 'lodash/fp';
+// eslint-disable-next-line lodash/import-scope
 import { countBy } from 'lodash';
 
 import checkRules from './utils/check-rules';
@@ -41,7 +42,7 @@ const hashCode = (inputString: string): number =>
     reduce((currentItem, accumulator) => ((currentItem << 5) - currentItem + accumulator.charCodeAt(0)) | 0, 0),
   )(inputString);
 
-const schemaTypesToViewData = (types: SchemaType[]) => {
+const schemaTypesToViewData = (types: SchemaType[]): KeyPair => {
   const countsByField = flow(
     flatMap((type: SchemaType) => map('name', type.fields)),
     countBy, // For some reason the lodash/fp version of this causes everything to explode
