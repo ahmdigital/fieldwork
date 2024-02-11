@@ -1,15 +1,14 @@
 {
   "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "lib": ["es2015", "es2016", "es2017"],
     "moduleResolution": "node",
-    "target": "esnext",
-    "module": "esnext",
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "esModuleInterop": true,
     "strict": true,
-    "downlevelIteration": true,
+    "sourceMap": true,
     "declaration": true,
     "allowSyntheticDefaultImports": true,
-    "skipLibCheck": true,
-    "isolatedModules": true
+    "skipLibCheck": true
   }
 }
