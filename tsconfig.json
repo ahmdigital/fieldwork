@@ -3,7 +3,8 @@
   "include": ["./src", "./package.config.ts"],
   "compilerOptions": {
     "rootDir": ".",
+    "outDir": "./dist",
     "jsx": "react-jsx",
-    "noEmit": true
+    "noEmit": true,
   }
 }
