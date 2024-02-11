@@ -1,15 +1,17 @@
 {
   "compilerOptions": {
-    "moduleResolution": "node",
-    "target": "esnext",
-    "module": "esnext",
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
-    "esModuleInterop": true,
-    "strict": true,
-    "downlevelIteration": true,
-    "declaration": true,
     "allowSyntheticDefaultImports": true,
+    "declaration": true,
+    "downlevelIteration": true,
+    "emitDeclarationOnly": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "module": "esnext",
+    "moduleResolution": "node",
     "skipLibCheck": true,
-    "isolatedModules": true
+    "strict": true,
+    "target": "esnext",
+    "outDir": "dist",
   }
 }
