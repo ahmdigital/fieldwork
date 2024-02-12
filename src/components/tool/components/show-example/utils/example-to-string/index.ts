@@ -12,7 +12,7 @@ type Block = {
   children?: any;
 };
 
-const exampleToString = (blocks: string | Block | Block[]): string => {
+const exampleToString = (blocks: null | string | Block | Block[]): string => {
   if (blocks === null) {
     return 'No Example Available';
   }

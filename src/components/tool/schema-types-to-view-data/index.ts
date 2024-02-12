@@ -19,21 +19,8 @@ import {
 // eslint-disable-next-line lodash/import-scope
 import { countBy } from 'lodash';
 
+import { KeyPair } from '../../../types';
 import checkRules from './utils/check-rules';
-
-type KeyPair = {
-  [key: string]: any;
-};
-
-type SchemaField = {
-  name: string;
-  validation?: Function;
-};
-
-type SchemaType = {
-  fields: SchemaField[];
-  name: string;
-};
 
 const hashCode = (inputString: string): number =>
   flow(
@@ -42,9 +29,13 @@ const hashCode = (inputString: string): number =>
     reduce((currentItem, accumulator) => ((currentItem << 5) - currentItem + accumulator.charCodeAt(0)) | 0, 0),
   )(inputString);
 
-const schemaTypesToViewData = (types: SchemaType[]): KeyPair => {
+const schemaTypesToViewData = (types: any): KeyPair => {
+  if (!types) {
+    return [];
+  }
+
   const countsByField = flow(
-    flatMap((type: SchemaType) => map('name', type.fields)),
+    flatMap((type: { fields: any }) => map('name', type.fields)),
     countBy, // For some reason the lodash/fp version of this causes everything to explode
     toPairs,
     sortBy(([, count]) => count),
@@ -53,8 +44,8 @@ const schemaTypesToViewData = (types: SchemaType[]): KeyPair => {
   )(types);
 
   const output: KeyPair = {};
-  forEach((type: SchemaType) => {
-    forEach((field: SchemaField) => {
+  forEach((type) => {
+    forEach((field) => {
       output[field.name] = compact(
         concat(
           defaults(field, {
