@@ -2,7 +2,7 @@ FROM node:16
 
 WORKDIR /var/app
 
-COPY .eslintignore
+COPY .eslintignore .
 COPY .eslintrc .
 COPY package-lock.json .
 COPY package.json .
