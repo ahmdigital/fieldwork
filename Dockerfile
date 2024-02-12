@@ -5,6 +5,7 @@ WORKDIR /var/app
 COPY .eslintrc .
 COPY package-lock.json .
 COPY package.json .
+COPY package.config.ts .
 
 RUN npm install
 

@@ -3,7 +3,7 @@ import { GiMagnifyingGlass } from 'react-icons/gi';
 
 import Fieldwork from './components/tool';
 
-export interface FieldworkConfig {
+interface FieldworkConfig {
   /* nothing here yet */
 }
 
