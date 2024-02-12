@@ -20,14 +20,14 @@
     ".": {
       "types": "./dist/index.d.ts",
       "source": "./src/index.ts",
-      "import": "./dist/index.esm.mjs",
+      "import": "./dist/index.esm.js",
       "require": "./dist/index.js",
       "default": "./dist/index.esm.js"
     },
     "./package.json": "./package.json"
   },
   "main": "./dist/index.js",
-  "module": "./dist/index.esm.mjs",
+  "module": "./dist/index.esm.js",
   "source": "./src/index.ts",
   "types": "./dist/index.d.ts",
   "files": [
