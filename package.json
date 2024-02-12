@@ -27,7 +27,7 @@
     "./package.json": "./package.json"
   },
   "main": "./dist/index.js",
-  "module": "./dist/index.esm.js",
+  "module": "./dist/index.esm.mjs",
   "source": "./src/index.ts",
   "types": "./dist/index.d.ts",
   "files": [
