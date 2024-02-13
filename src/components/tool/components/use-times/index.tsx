@@ -5,7 +5,7 @@ import getPluralisationCharacter from './utils/get-pluralised-character';
 type UseTimesProps = {
   fieldName: string;
   groupOfItems: object;
-  items: any[];
+  items: object[];
 };
 
 const UseTimes = ({ fieldName, groupOfItems, items }: UseTimesProps) => {

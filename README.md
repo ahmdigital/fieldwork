@@ -1,4 +1,10 @@
-# sanity-plugin-fieldwork
+# Fieldwork
+
+Inspect your Sanity.io schema fields straight in your Studio using this tool
+
+## Some use cases
+
+- See what you've got in preparation for adding new schemas, so you can maximise re-use.
 
 > This is a **Sanity Studio v3** plugin.
 
