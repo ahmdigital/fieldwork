@@ -1,6 +1,6 @@
 {
   "name": "sanity-plugin-fieldwork",
-  "version": "1.0.0",
+  "version": "1.1.2",
   "description": "Inspect your Sanity.io schema fields straight in your Studio using this tool",
   "keywords": [
     "cms",
@@ -95,7 +95,7 @@
     "sanity": "^3"
   },
   "engines": {
-    "node": ">=16"
+    "node": ">=14"
   },
   "browserslist": "extends @sanity/browserslist-config"
 }
