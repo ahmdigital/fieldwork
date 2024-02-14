@@ -5,6 +5,7 @@
     "browser": true
   },
   "extends": [
+    "@ahmdigital/eslint-config/ts-config",
     "@ahmdigital/eslint-config/react-config",
     "sanity",
     "sanity/typescript",
