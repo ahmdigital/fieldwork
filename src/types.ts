@@ -1,5 +1,5 @@
 export type KeyPair = {
-  [key: string]: string | object;
+  [key: string]: any;
 };
 
 export type Field = {
@@ -9,7 +9,9 @@ export type Field = {
 };
 
 export type SchemaType = {
-  fields: Field[];
+  fields?: Array<Field>;
   name: string;
   type: string;
 };
+
+export type FieldName = string | number;

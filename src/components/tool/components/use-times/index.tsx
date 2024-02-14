@@ -1,9 +1,10 @@
 import { flatten, flow, size, values } from 'lodash/fp';
 
+import { FieldName } from '../../../../types';
 import getPluralisationCharacter from './utils/get-pluralised-character';
 
 type UseTimesProps = {
-  fieldName: string;
+  fieldName: FieldName;
   groupOfItems: object;
   items: object[];
 };

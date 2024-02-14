@@ -1,11 +1,12 @@
 import { Fragment, useEffect, useState } from 'react';
+import { SanityClient } from 'sanity';
 
+import { FieldName, KeyPair } from '../../../../types';
 import exampleToString from './utils/example-to-string';
-import { KeyPair } from '../../../../types';
 
 type ShowExampleProps = {
-  fieldName: string;
-  sanityClient: any;
+  fieldName: FieldName;
+  sanityClient: SanityClient;
   typeNames: string[];
 };
 

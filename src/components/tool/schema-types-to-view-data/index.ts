@@ -29,7 +29,7 @@ const hashCode = (inputString: string): number =>
     reduce((currentItem, accumulator) => ((currentItem << 5) - currentItem + accumulator.charCodeAt(0)) | 0, 0),
   )(inputString);
 
-const schemaTypesToViewData = (types: Array<SchemaType>): KeyPair[] => {
+const schemaTypesToViewData = (types: Array<SchemaType>): Array<KeyPair> => {
   if (!types) {
     return [];
   }

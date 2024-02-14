@@ -1,11 +1,11 @@
-import styled from "styled-components";
-import { useClient, useSchema } from "sanity";
+import { Fragment } from 'react';
+import { useClient, useSchema } from 'sanity';
+import _ from 'lodash';
+import styled from 'styled-components';
 
-import schemaTypesToViewData from "./schema-types-to-view-data";
-import _ from "lodash";
-import UseTimes from "./components/use-times";
-import { Fragment } from "react";
-import ShowExample from "./components/show-example";
+import schemaTypesToViewData from './schema-types-to-view-data';
+import ShowExample from './components/show-example';
+import UseTimes from './components/use-times';
 
 const Wrapper = styled.div`
   margin: 0 auto;
@@ -34,7 +34,7 @@ const OptionsJSON = styled.pre`
 const Fieldwork = () => {
   const sanityClient = useClient();
   const schema = useSchema();
-  const types = _.get(schema, "_original.types");
+  const types = _.get(schema, '_original.types', []);
   const viewData = schemaTypesToViewData(types);
 
   return (
@@ -54,8 +54,7 @@ const Fieldwork = () => {
                       <h3>No variations</h3>
                     ) : (
                       <h3>
-                        Variation {_.keys(groupOfItems).indexOf(hash) + 1} of{" "}
-                        {_.size(groupOfItems)}
+                        Variation {_.keys(groupOfItems).indexOf(hash) + 1} of {_.size(groupOfItems)}
                       </h3>
                     )}
 
@@ -68,7 +67,7 @@ const Fieldwork = () => {
                         <Fragment key={typeName}>
                           <a key={typeName} href={`/desk/${typeName}`}>
                             {typeName}
-                          </a>{" "}
+                          </a>{' '}
                         </Fragment>
                       ))}
                     </p>
@@ -83,16 +82,14 @@ const Fieldwork = () => {
                     {!_.isEmpty(options) && (
                       <Fragment>
                         <h4>Options</h4>
-                        <OptionsJSON>
-                          {JSON.stringify(options, null, 2)}
-                        </OptionsJSON>
+                        <OptionsJSON>{JSON.stringify(options, null, 2)}</OptionsJSON>
                       </Fragment>
                     )}
 
                     {!_.isEmpty(validation) && (
                       <Fragment>
                         <h4>Validations</h4>
-                        <p>{validation.join(", ")}</p>
+                        <p>{validation.join(', ')}</p>
                       </Fragment>
                     )}
 
@@ -101,11 +98,10 @@ const Fieldwork = () => {
                       <ShowExample
                         sanityClient={sanityClient}
                         fieldName={fieldName}
-                        typeNames={_.map(items, "typeName")}
+                        typeNames={_.map(items, 'typeName')}
                       />
                     </p>
-                    {_.size(_.keys(groupOfItems)) === 1 ||
-                    _.isEqual(hash, _.last(_.keys(groupOfItems))) ? null : (
+                    {_.size(_.keys(groupOfItems)) === 1 || _.isEqual(hash, _.last(_.keys(groupOfItems))) ? null : (
                       <hr />
                     )}
                   </div>
