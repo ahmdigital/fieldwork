@@ -9,7 +9,7 @@ type Block = {
   current?: string;
   _type: string;
   asset?: Asset;
-  children?: any;
+  children?: Array<string | object>;
 };
 
 const exampleToString = (blocks: null | string | Block | Block[]): string => {
