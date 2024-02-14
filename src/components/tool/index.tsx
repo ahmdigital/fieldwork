@@ -1,11 +1,13 @@
+import { map as cappedMap, get, identity, isEmpty, isEqual, keys, last, size, sortBy } from 'lodash/fp';
 import { Fragment } from 'react';
 import { useClient, useSchema } from 'sanity';
-import _ from 'lodash';
 import styled from 'styled-components';
 
 import schemaTypesToViewData from './schema-types-to-view-data';
 import ShowExample from './components/show-example';
 import UseTimes from './components/use-times';
+
+// Gives us access to two arguments for mapping
 
 const Wrapper = styled.div`
   margin: 0 auto;
@@ -31,10 +33,14 @@ const OptionsJSON = styled.pre`
   max-width: 25rem;
 `;
 
+// Convert the map function to the uncapped version
+// That way we get two parameters for the callback
+const map = cappedMap.convert({ cap: false });
+
 const Fieldwork = () => {
   const sanityClient = useClient();
   const schema = useSchema();
-  const types = _.get(schema, '_original.types', []);
+  const types = get('_original.types', schema);
   const viewData = schemaTypesToViewData(types);
 
   return (
@@ -42,19 +48,19 @@ const Fieldwork = () => {
       <h1>Fieldwork</h1>
       <Tagline>Investigate the fields in your schema</Tagline>
       <div>
-        {_.map(viewData, (groupOfItems, fieldName) => {
+        {map((groupOfItems, fieldName) => {
           return (
             <Well key={fieldName}>
               <FieldName>{fieldName}</FieldName>
-              {_.map(groupOfItems, (items, hash) => {
+              {map((items, hash) => {
                 const { description, options, validation, type } = items[0];
                 return (
                   <div key={hash}>
-                    {_.size(groupOfItems) === 1 ? (
+                    {size(groupOfItems) === 1 ? (
                       <h3>No variations</h3>
                     ) : (
                       <h3>
-                        Variation {_.keys(groupOfItems).indexOf(hash) + 1} of {_.size(groupOfItems)}
+                        Variation {keys(groupOfItems).indexOf(hash) + 1} of {size(groupOfItems)}
                       </h3>
                     )}
 
@@ -63,13 +69,16 @@ const Fieldwork = () => {
                     <h4>Use</h4>
                     <UseTimes {...{ fieldName, groupOfItems, items }} />
                     <p>
-                      {_.map(_.sortBy(items, _.identity), ({ typeName }) => (
-                        <Fragment key={typeName}>
-                          <a key={typeName} href={`/desk/${typeName}`}>
-                            {typeName}
-                          </a>{' '}
-                        </Fragment>
-                      ))}
+                      {map(
+                        ({ typeName }) => (
+                          <Fragment key={typeName}>
+                            <a key={typeName} href={`/desk/${typeName}`}>
+                              {typeName}
+                            </a>{' '}
+                          </Fragment>
+                        ),
+                        sortBy(identity, items),
+                      )}
                     </p>
 
                     {description && (
@@ -79,14 +88,14 @@ const Fieldwork = () => {
                       </Fragment>
                     )}
 
-                    {!_.isEmpty(options) && (
+                    {!isEmpty(options) && (
                       <Fragment>
                         <h4>Options</h4>
                         <OptionsJSON>{JSON.stringify(options, null, 2)}</OptionsJSON>
                       </Fragment>
                     )}
 
-                    {!_.isEmpty(validation) && (
+                    {!isEmpty(validation) && (
                       <Fragment>
                         <h4>Validations</h4>
                         <p>{validation.join(', ')}</p>
@@ -98,19 +107,16 @@ const Fieldwork = () => {
                       <ShowExample
                         sanityClient={sanityClient}
                         fieldName={fieldName}
-                        typeNames={_.map(items, 'typeName')}
+                        typeNames={map('typeName', items)}
                       />
                     </p>
-                    {_.size(_.keys(groupOfItems)) === 1 || _.isEqual(hash, _.last(_.keys(groupOfItems))) ? null : (
-                      <hr />
-                    )}
+                    {size(keys(groupOfItems)) === 1 || isEqual(hash, last(keys(groupOfItems))) ? null : <hr />}
                   </div>
                 );
-              })}
+              }, groupOfItems)}
             </Well>
           );
-        })}
-        <h1>Test</h1>
+        }, viewData)}
       </div>
     </Wrapper>
   );
