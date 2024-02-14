@@ -9,6 +9,7 @@ interface FieldworkConfig {
 
 export const fieldwork = definePlugin<FieldworkConfig | void>((config = {}) => {
   return {
+    ...config,
     tools: (prev) => {
       return [
         ...prev,

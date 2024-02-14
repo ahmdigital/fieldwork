@@ -1,4 +1,4 @@
-const checkRules = (validation: Function) => {
+const checkRules = (validation: Function): string[] => {
   const methodsHit: string[] = [];
   const mockRules = new Proxy(
     {},

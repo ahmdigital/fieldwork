@@ -26,6 +26,7 @@
     }
   },
   "rules": {
+    "jsdoc/require-param-type": "off",
     "import/extensions": [
       "error",
       "ignorePackages",
