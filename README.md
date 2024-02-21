@@ -3,22 +3,39 @@
 Inspect your Sanity.io schema fields straight in your Studio using this tool
 
 ## Some use cases
+
 - See what you've got in preparation for adding new schemas, so you can maximise re-use.
-- See where you can simplify things. Its useful for everyone to have fields with the same name act the same.
+
+> This is a **Sanity Studio v3** plugin.
 
 ## Installation
 
-1. `sanity install fieldwork`
-2. There's no step 2.
+```sh
+npm install sanity-plugin-fieldwork
+```
 
-## Examples
+## Usage
 
-<img width="641" alt="image" src="https://user-images.githubusercontent.com/4197647/81630417-de847400-9448-11ea-8d2c-185c7d5df0fb.png">
+Add it as a plugin in `sanity.config.ts` (or .js):
 
-## Contributing
+```ts
+import { defineConfig } from "sanity";
+import { fieldwork } from "sanity-plugin-fieldwork";
 
-Yes, please!
+export default defineConfig({
+  //...
+  plugins: [fieldwork({})],
+});
+```
 
-Repo still needs a way of running locally without a studio, but for now use `npm link` and develop it against your own studio.
+## License
 
-Will add a CD integration to npm if this takes off. For now we at least have CI for lint.
+[MIT](LICENSE) © ahm digital
+
+## Develop & test
+
+This plugin uses [@sanity/plugin-kit](https://github.com/sanity-io/plugin-kit)
+with default configuration for build & watch scripts.
+
+See [Testing a plugin in Sanity Studio](https://github.com/sanity-io/plugin-kit#testing-a-plugin-in-sanity-studio)
+on how to run this plugin with hotreload in the studio.
