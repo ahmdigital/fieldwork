@@ -1,6 +1,6 @@
 import { map as cappedMap, get, identity, isEmpty, isEqual, keys, last, size, sortBy } from 'lodash/fp';
 import { Fragment } from 'react';
-import { useClient, useSchema } from 'sanity';
+import { useClient, useDataset, useSchema, useWorkspace } from 'sanity';
 import styled from 'styled-components';
 
 import schemaTypesToViewData from './schema-types-to-view-data';
@@ -38,9 +38,14 @@ const OptionsJSON = styled.pre`
 // @ts-ignore - it complains about the `convert` function not existing on LodashMapValues
 const map = cappedMap.convert({ cap: false });
 
+const buildUseCaseUrl = (basePath: string, typeName: string): string => {
+  return `${basePath === '/' ? '' : basePath}/structure/${typeName}`;
+};
+
 const Fieldwork = () => {
   const sanityClient = useClient();
   const schema = useSchema();
+  const workspace = useWorkspace();
   const types = get('_original.types', schema);
   const viewData = schemaTypesToViewData(types);
 
@@ -83,12 +88,12 @@ const Fieldwork = () => {
                           // eslint-disable-next-line react/no-unused-prop-types
                           ({ typeName }: { typeName: string }) => (
                             <Fragment key={typeName}>
-                              <a key={typeName} href={`/desk/${typeName}`}>
+                              <a key={typeName} href={buildUseCaseUrl(workspace.basePath, typeName)}>
                                 {typeName}
                               </a>{' '}
                             </Fragment>
                           ),
-                          sortBy(identity, items),
+                          sortBy(identity, items).reverse(),
                         )}
                       </p>
 
